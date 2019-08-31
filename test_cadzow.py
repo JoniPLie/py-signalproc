@@ -26,7 +26,9 @@ plt.title('Fourier Transform of Clean Signal')
 
 # Observed Signal
 Nobs=512
-xpad=np.append(x,[0 for k in range(Nobs-N)]) # zero pad the clean signal
+#xpad=np.append(x,[0 for k in range(Nobs-N)]) # zero pad the clean signal
+# the duration where signal is present is irrelevant. Here we introduce delay of 100 samples
+xpad=np.append([0 for k in range(100)],np.append(x,[0 for k in range(Nobs-N-100)]))
 plt.figure(8)
 plt.plot(abs(np.fft.fft(xpad)))
 plt.title('Fourier Transform of Zero Padded Clean Signal')
